@@ -39,6 +39,11 @@ class DashboardController < ApplicationController
     end
   end
 
+  def send_sms
+    SendSmsWorker.perform_async(params[:phone_number])
+    render json: {status: 200, msg: '短信已经发送，请注意查收。'}
+  end
+
   private
 
   def setting_params

@@ -34,3 +34,18 @@ $(document).on 'blur', '#set-frequency', (e) ->
   }
   if new_frequency != old_frequency
     $.ajax ajaxOption
+
+$(document).on 'click', '#send-sms-button', (e) ->
+  $phoneNumberElem = $('#mobile-number')
+  phoneNumber = $phoneNumberElem.val().toString()
+  ajaxOption = {
+    url:'/dashboard/send_sms'
+    method: 'POST'
+    dataType: 'JSON'
+    data:
+      phone_number: phoneNumber,
+      authenticity_token: $('[name="csrf-token"]')[0].content
+    success: (response) ->
+      if response.status == 200 then alert(response.msg)
+  }
+  $.ajax ajaxOption
