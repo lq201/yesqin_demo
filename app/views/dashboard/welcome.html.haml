@@ -1,10 +1,12 @@
 .container
-.setting-block.input-group
-  %div 设置更新频率
-  = text_field_tag 'set-frequency', @setting.frequency, id:'set-frequency', class: 'form-control', data:{sid: @setting.id}
-  .input-group-append
-    %span.input-group-text 分钟
-.mail-block.input-group
-  = text_field_tag 'email-address', 'zzcv20051122@gmail.com', class: 'form-control'
-  .input-group-append
-    = button_tag '发送邮件', type: 'button', class: 'btn btn-outline-secondary', id: 'send-email-button'
+  .setting-block.form-group
+    %label  设置更新频率
+    .input-group
+      = text_field_tag 'set-frequency', @setting.frequency, id:'set-frequency', class: 'form-control', data:{sid: @setting.id, 'old-frequnecy' => @setting.frequency}
+      .input-group-addon
+        %span.input-group-text 分钟
+  .mail-block.form-inline
+    .form-group
+      .input-group
+        = text_field_tag 'email-address', 'zzcv20051122@gmail.com', class: 'form-control'
+    = button_tag '发送邮件', type: 'button', class: 'btn btn-primary', id: 'send-email-button'

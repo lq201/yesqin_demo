@@ -19,6 +19,13 @@ class DashboardController < ApplicationController
       render json: {status: 404, msg: '找不到设置对象！'}
     else
       if setting.update_attributes(frequency: params[:frequency])
+        scheduler = Sidekiq::ScheduledSet.new
+        # 删除所有旧的schedule job
+        old_jobs = scheduler.select {|work| work.klass == 'SeoUrlWorker' }.sort
+        old_jobs.each(&:delete) if old_jobs.present?
+
+        SeoUrlWorker.perform_in(setting.frequency.minutes)
+
         render json: {status: 200, msg: '频率更新成功。'}
       else
         render json: {status: 500, msg: '频率更新失败。'}
