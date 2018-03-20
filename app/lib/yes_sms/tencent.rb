@@ -10,9 +10,8 @@ require 'digest'
 module YesSms
   class Tencent
     def self.send_validation_code(mobile)
-
-      appid = "1400064423"
-      appkey = "93ac5cfdc835c64b284f6c8b891e1339"
+      appid = TENCENT_SMS['APP_ID']
+      appkey = TENCENT_SMS['APP_KEY']
       random = 1234
       unix_timestamps = Time.now.to_i
 
@@ -38,20 +37,20 @@ module YesSms
 
       body = {
         "tel" => {
-          "nationcode" => "86",  
+          "nationcode" => "86",
           "mobile" => mobile.to_s
         },
         "sign" => sign,
         "tpl_id" => tpl_id,
         "params" => params,
-        "sig" => sig, 
+        "sig" => sig,
         "time" => unix_timestamps,
-        "extend" => "", 
-        "ext" => ""        
+        "extend" => "",
+        "ext" => ""
       }
 
       puts body.inspect
-      
+
       # Create the HTTP objects
       https = Net::HTTP.new(uri.host, uri.port)
       https.use_ssl = true
@@ -60,7 +59,7 @@ module YesSms
 
       # Send the request
       res = https.request(request)
-      
+
       puts "Response #{res.code} #{res.message}: #{res.body}"
     end
   end

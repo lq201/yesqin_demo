@@ -16,3 +16,5 @@ module YesqinDemo
     # -- all .rb files in that directory are automatically loaded.
   end
 end
+
+TENCENT_SMS = YAML.load(File.read(File.expand_path('../tencent_sms.yml', __FILE__))).fetch(Rails.env)
