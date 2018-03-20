@@ -17,15 +17,20 @@ $(document).on 'click', '#send-email-button', (e) ->
   $.ajax ajaxOption
 
 $(document).on 'blur', '#set-frequency', (e) ->
+  new_frequency = $(this).val().toString()
+  old_frequency = $(this).data('old-frequnecy').toString()
   ajaxOption = {
     url:'/dashboard/save_frequency'
     method: 'POST'
     dataType: 'JSON'
     data:
       id: $(this).data('sid'),
-      frequency: $(this).val(),
+      frequency: new_frequency,
       authenticity_token: $('[name="csrf-token"]')[0].content
     success: (response) ->
-      if response.status == 200 then alert(response.msg)
+      if response.status == 200
+        alert(response.msg)
+        $(this).data('old-frequnecy', new_frequency)
   }
-  $.ajax ajaxOption
+  if new_frequency != old_frequency
+    $.ajax ajaxOption
