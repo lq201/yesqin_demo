@@ -3,6 +3,10 @@ class DashboardController < ApplicationController
     @setting = Setting.first
   end
 
+  def posts
+    @posts = TestPost.all
+  end
+
   def save_setting
     @setting = Setting.find_by(id: params[:id])
     @setting.update(setting_params)

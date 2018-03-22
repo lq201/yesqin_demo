@@ -1,0 +1,15 @@
+.container
+  %table.table
+    %thead
+      %tr
+        %th{scope: 'col'} #
+        %th{scope: 'col'}= t('posts.title')
+        %th{scope: 'col'}= t('posts.name')
+        %th{scope: 'col'}= t('posts.seo_url')
+    %tbody
+      - @posts.each do |post|
+        %tr
+          %td= post.id
+          %td= post.post_title
+          %td= post.post_title
+          %td= post.seo_url

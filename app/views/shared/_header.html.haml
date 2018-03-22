@@ -1,0 +1,9 @@
+%nav.navbar.navbar-default
+  .navbar-header
+  = link_to t('shared.yes_qin'), '/', class: 'navbar-brand'
+  .collapse.navbar-collapse
+    %ul.nav.navbar-nav
+      %li{class: "#{action_name != 'posts' ? 'active' : ''}"}
+        = link_to t('shared.dashboard'), dashboard_welcome_path, class: 'nav-link'
+      %li{class: "#{action_name == 'posts' ? 'active' : ''}"}
+        = link_to t('shared.posts'), dashboard_posts_path, class: 'nav-link'

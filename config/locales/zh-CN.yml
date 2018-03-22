@@ -1,0 +1,15 @@
+zh-CN:
+  minute: '分钟'
+  shared:
+    yes_qin: '悦勤信息'
+    dashboard: '仪表盘'
+    posts: '帖子列表'
+    actions:
+      send_email: '发送邮件'
+  posts:
+    title: '标题'
+    name: '名称'
+    seo_url: '优化链接'
+  settings:
+    set_frequency: '设置更新频率'
+

@@ -18,4 +18,14 @@ ActiveRecord::Schema.define(version: 20180319133913) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "test_posts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "post_title"
+    t.string "post_name"
+    t.string "seo_url", collation: "latin1_swedish_ci"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_name"], name: "post_name_UNIQUE", unique: true
+    t.index ["post_title"], name: "post_title_UNIQUE", unique: true
+  end
+
 end
