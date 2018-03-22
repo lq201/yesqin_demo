@@ -10,3 +10,9 @@
       .input-group
         = text_field_tag 'email-address', 'zzcv20051122@gmail.com', class: 'form-control'
     = button_tag t('shared.actions.send_email'), type: 'button', class: 'btn btn-primary', id: 'send-email-button'
+  %br
+  .sms-block.form-inline
+    .form-group
+      .input-group
+        = text_field_tag 'mobile-number', '13761690891', class: 'form-control'
+    = button_tag '发送短信', type: 'button', class: 'btn btn-primary', id: 'send-sms-button'

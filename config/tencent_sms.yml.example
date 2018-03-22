@@ -1,0 +1,15 @@
+default: &default
+  APP_ID: 'xxx'
+  APP_KEY: 'xxx'
+
+production:
+  <<: *default
+
+staging:
+  <<: *default
+
+development:
+  <<: *default
+
+test:
+  <<: *default
