@@ -21,6 +21,8 @@ class DashboardController < ApplicationController
     setting = Setting.find_by(id: params[:id])
     if setting.blank?
       render json: {status: 404, msg: '找不到设置对象！'}
+    elsif params[:frequency].to_i < 1
+      render json: {status: 500, msg: '最小频率不能小于1分钟'}
     else
       if setting.update_attributes(frequency: params[:frequency])
         scheduler = Sidekiq::ScheduledSet.new
@@ -46,6 +48,11 @@ class DashboardController < ApplicationController
   def send_sms
     SendSmsWorker.perform_async(params[:phone_number])
     render json: {status: 200, msg: '短信已经发送，请注意查收。'}
+  end
+
+  def clear_seo_url
+    TestPost.update_all(seo_url: nil)
+    render json: {status: 200, msg: "所有#{t('posts.seo_url')}已经被清除"}
   end
 
   private

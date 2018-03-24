@@ -10,6 +10,7 @@ zh-CN:
     title: '标题'
     name: '名称'
     seo_url: '优化链接'
+    clear_seo_url: '清除所有的已经优化的链接'
   settings:
     set_frequency: '设置更新频率'
 

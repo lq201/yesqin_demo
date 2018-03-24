@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   post 'dashboard/send_email'
   post 'dashboard/save_frequency'
   post 'dashboard/send_sms'
+  post 'dashboard/clear_seo_url'
 end

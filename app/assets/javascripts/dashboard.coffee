@@ -49,3 +49,17 @@ $(document).on 'click', '#send-sms-button', (e) ->
       if response.status == 200 then alert(response.msg)
   }
   $.ajax ajaxOption
+
+$(document).on 'click', '#clear-seo-url', (e) ->
+  ajaxOption = {
+    url:'/dashboard/clear_seo_url'
+    method: 'POST'
+    dataType: 'JSON'
+    data:
+      authenticity_token: $('[name="csrf-token"]')[0].content
+    success: (response) ->
+      if response.status == 200
+        alert(response.msg)
+        window.location.reload()
+  }
+  $.ajax ajaxOption
