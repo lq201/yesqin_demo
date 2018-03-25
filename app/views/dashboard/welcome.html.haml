@@ -16,3 +16,15 @@
       .input-group
         = text_field_tag 'mobile-number', '13761690891', class: 'form-control'
     = button_tag '发送短信', type: 'button', class: 'btn btn-primary', id: 'send-sms-button'
+
+#mailer-templates.modal.fade{role: 'dialog'}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        = button_tag type: 'button', class: 'close', data: {dismiss: 'modal'} do
+          %span{'aria-hidden' => 'true'} &times;
+        %h4.modal-title= t('shared.email_template_chooser')
+      .modal-body
+        = render template: 'dashboard/mailer_tempates'
+      .modal-footer
+        = button_tag t('shared.actions.comfirmed'), type: 'button', class: 'btn btn-primary', id: 'send-email-submit'

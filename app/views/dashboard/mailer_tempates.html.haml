@@ -1,0 +1,12 @@
+.radio
+  %label
+    = radio_button_tag 'email-chooser', '1', true, class: 'email-chooser'
+    = t('shared.email_template', number: 1)
+.email-template
+  = render template: 'notifier_mailer/welcome', locals: {greeting: 'zzcv20051122@gmail.com'}
+.radio
+  %label
+    = radio_button_tag 'email-chooser', '2', false, class: 'email-chooser'
+    = t('shared.email_template', number: 2)
+.email-template.hidden
+  = render template: 'notifier_mailer/welcome2', locals: {greeting: 'zzcv20051122@gmail.com'}

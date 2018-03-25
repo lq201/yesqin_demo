@@ -4,15 +4,26 @@
 
 
 $(document).on 'click', '#send-email-button', (e) ->
+  $('#mailer-templates').modal('show')
+
+$(document).on 'change', '.email-chooser', (e) ->
+  $this = $(this)
+  $this.closest('.modal-body').find('.email-template').addClass('hidden')
+  $this.closest('.radio').next().removeClass('hidden')
+
+$(document).on 'click', '#send-email-submit', (e) ->
   ajaxOption = {
     url:'/dashboard/send_email'
     method: 'POST'
     dataType: 'JSON'
     data:
       address: $('#email-address').val(),
+      email_template_number: $('input[name="email-chooser"]:checked').val(),
       authenticity_token: $('[name="csrf-token"]')[0].content
     success: (response) ->
-      if response.status == 200 then alert(response.msg)
+      if response.status == 200
+        $('#mailer-templates').modal('hide')
+        alert(response.msg)
   }
   $.ajax ajaxOption
 

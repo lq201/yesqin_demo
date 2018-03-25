@@ -4,8 +4,11 @@ zh-CN:
     yes_qin: '悦勤信息'
     dashboard: '仪表盘'
     posts: '帖子列表'
+    email_template_chooser: '邮件模板选择器'
+    email_template: 邮件模板%{number}
     actions:
       send_email: '发送邮件'
+      comfirmed: '确认'
   posts:
     title: '标题'
     name: '名称'
