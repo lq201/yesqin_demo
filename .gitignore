@@ -16,6 +16,9 @@
 /tmp
 config/database.yml
 config/tencent_sms.yml
+config/puma.rb
+config/sidekiq.yml
+config/initializers/setup_email.rb
 *.swp
 /.vscode/*
 /public/packs
