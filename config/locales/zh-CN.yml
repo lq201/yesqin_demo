@@ -9,6 +9,8 @@ zh-CN:
     actions:
       send_email: '发送邮件'
       comfirmed: '确认'
+      previous: '上一个'
+      next: '下一个'
   posts:
     title: '标题'
     name: '名称'

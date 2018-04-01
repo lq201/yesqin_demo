@@ -1,12 +1,21 @@
-.radio
-  %label
-    = radio_button_tag 'email-chooser', '1', true, class: 'email-chooser'
-    = t('shared.email_template', number: 1)
-.email-template
-  = render template: 'notifier_mailer/welcome', locals: {greeting: 'zzcv20051122@gmail.com'}
-.radio
-  %label
-    = radio_button_tag 'email-chooser', '2', false, class: 'email-chooser'
-    = t('shared.email_template', number: 2)
-.email-template.hidden
-  = render template: 'notifier_mailer/welcome2', locals: {greeting: 'zzcv20051122@gmail.com'}
+#carousel-example-generic.carousel.slide{data: {ride: 'carousel', interval: 'false'}}
+  %ol.carousel-indicators
+    %li.active{data: {target: '#carousel-example-generic'}, 'slide-to' => 0}
+    %li{data: {target: '#carousel-example-generic'}, 'slide-to' => 1}
+  .carousel-inner{role: 'listbox'}
+    - NotifierPreview.instance_methods(false).each_with_index do |me, idx|
+      - number = idx + 1
+      .item{class: (number == 1 ? 'active' : '')}
+        .carousel-caption
+          .radio
+            %label
+              = radio_button_tag 'email-chooser', "#{number}", (number == 1 ? true : false), class: 'email-chooser'
+              = t('shared.email_template', number: number)
+          .email-template
+            %iframe(src="/rails/mailers/notifier/#{me}" frameborder="0")
+  %a.left.carousel-control{href: '#carousel-example-generic', role: 'button', data: {slide: 'prev'}}
+    %span.glyphicon.glyphicon-chevron-left{'aria-hidden' => 'true'}
+    %span.sr-only= t('shared.actions.previous')
+  %a.right.carousel-control{href: '#carousel-example-generic', role: 'button', data: {slide: 'next'}}
+    %span.glyphicon.glyphicon-chevron-right{'aria-hidden' => 'true'}
+    %span.sr-only= t('shared.actions.next')

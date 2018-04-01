@@ -6,10 +6,8 @@
 $(document).on 'click', '#send-email-button', (e) ->
   $('#mailer-templates').modal('show')
 
-$(document).on 'change', '.email-chooser', (e) ->
-  $this = $(this)
-  $this.closest('.modal-body').find('.email-template').addClass('hidden')
-  $this.closest('.radio').next().removeClass('hidden')
+$(document).on 'shown.bs.modal', '#mailer-templates', (e) ->
+  customIframeStyle()
 
 $(document).on 'click', '#send-email-submit', (e) ->
   ajaxOption = {
@@ -74,3 +72,11 @@ $(document).on 'click', '#clear-seo-url', (e) ->
         window.location.reload()
   }
   $.ajax ajaxOption
+
+window.customIframeStyle = () ->
+  $head = $('.email-template iframe').contents().find('head')
+  console.log $head.length
+  $head.append $('<link/>',
+    rel: 'stylesheet'
+    href: $(document).find('head').find('link[rel="stylesheet"]').attr('href')
+    type: 'text/css')

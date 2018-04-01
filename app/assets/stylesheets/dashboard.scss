@@ -4,6 +4,26 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .mail-block .input-group { width: 320px; }
-.email-template {
-  padding-left: 28px;
+#mailer-templates {
+  .modal-body {
+    .carousel-inner {
+      .item {
+        height: 300px;
+        width: 100%;
+        .carousel-caption {
+          text-align: initial;
+          .radio label { color: black; }
+        }
+      }
+    }
+    .carousel-control {
+      background-image: none;
+    }
+  }
+  .email-template {
+    position: relative;
+    iframe {
+      width: 100%;
+    }
+  }
 }
