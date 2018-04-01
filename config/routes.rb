@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   post 'dashboard/save_frequency'
   post 'dashboard/send_sms'
   post 'dashboard/clear_seo_url'
+
+  mount MailPreview => 'mail_view'
 end
